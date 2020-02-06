@@ -1,0 +1,31 @@
+<h4>Please input notes tab</h4>
+<p>Example:</p>
+<p>Bm = B minor ; B = B major</p>
+<p>Progression: Em C A</p>
+
+<form [formGroup]="notesForm" (ngSubmit)="onSubmit(notesForm.value)">
+  <textarea
+    rows="4"
+    cols="50"
+    placeholder="Please input notes separated by a space"
+    formControlName="tabNotes"
+  ></textarea>
+  <br />
+  <input
+    type="number"
+    placeholder="Input tempo (in seconds)"
+    formControlName="tempo"
+  />
+  <br /><br />
+  <button class="button" type="submit">Go!</button>
+</form>
+<br />
+
+<button (click)="onStop()" class="button" type="submit">Stop!</button>
+
+<div>{{ tabNotes }}</div>
+<div *ngIf="tempo">Tempo: {{ tempo }}</div>
+
+<br /><br />
+
+<h3 class="render-notes" *ngFor="let note of noteValues">{{ note }}</h3>
